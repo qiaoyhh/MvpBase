@@ -28,6 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         mContext = getActivityContext();
         initView();
 
+        
         initdata();
 
     }

@@ -69,7 +69,6 @@ public class FirstDetilActivity extends BaseActivity implements FirstDetilView {
 
     @Override
     protected void setListener() {
-
     }
 
     @Override
