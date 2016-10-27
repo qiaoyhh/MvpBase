@@ -77,7 +77,6 @@ public class FirstDetilActivity extends BaseActivity implements FirstDetilView {
         mData = (DataBean) getIntent().getSerializableExtra("news");
         collapsing_toolbar.setTitle(mData.getTitle());
         ImageLoaderUtils.display(getApplicationContext(), (ImageView) findViewById(R.id.ivImage), mData.getImgsrc());
-
         mfirstPresenter = new FirstDetilPresenterImpl(FirstDetilActivity.this, this);
         mfirstPresenter.loadContent(mData.getDocid());
     }
