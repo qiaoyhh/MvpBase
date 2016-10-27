@@ -153,12 +153,18 @@ public class MainActivity extends BaseActivity implements MainView, NavigationVi
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content,new ThreeFragment()).commitAllowingStateLoss();
         toolbar.setTitle("图片");
     }
-    //关于我
+
+    /**
+     * 护眼模式，只在【新闻】界面实现了
+     *
+     * PS：虽然更换主题显的不伦不类，不过就是为了实现这个功能，将就着 看吧
+     *
+     */
     @Override
     public void switchMain() {
         if(isChangeTheme){
             isChangeTheme=false;
-            SkinManager.getInstance().changeSkin("green");
+            SkinManager.getInstance().changeSkin("blue");
         }else{
             isChangeTheme=true;
             SkinManager.getInstance().removeAnySkin();

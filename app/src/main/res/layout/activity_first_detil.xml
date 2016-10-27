@@ -48,6 +48,7 @@
 
 
     <android.support.v4.widget.NestedScrollView
+        android:background="@color/skin_item_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -67,6 +68,7 @@
                 android:id="@+id/htNewsContent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/skin_item_background"
                 android:padding="12dp"
                 android:textAppearance="@android:style/TextAppearance.Medium" />
 
