@@ -4,9 +4,9 @@
 
  - 史上最适合MVP初学者学习的DEMO，整体运用OKhttp+Mvp+MD风格设计，项目在网上抓取了实时新闻和搞笑图片，后期会继续完善其功能。
 
-   ![首页](image/image_1.png) 
-   ![详情页](image/image_2.png) 
-   ![登录界面](image/image_3.png)
+   ![首页](https://github.com/qiaoyhh/MvpPlus/blob/master/image/image1.png) 
+   ![详情页](https://github.com/qiaoyhh/MvpPlus/blob/master/image/image2.png) 
+   ![登录界面](https://github.com/qiaoyhh/MvpPlus/blob/master/image/image3.png)
 
 ###功能
 
