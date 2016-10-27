@@ -16,6 +16,7 @@ import android.widget.Toast;
  * Created by qyh on 2016/10/27.
  */
 
+
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     protected Context mContext;
     private ConnectivityManager manager;
@@ -28,7 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         mContext = getActivityContext();
         initView();
 
-        
+
         initdata();
 
     }
