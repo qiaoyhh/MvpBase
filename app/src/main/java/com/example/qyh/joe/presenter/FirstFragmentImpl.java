@@ -15,6 +15,7 @@ import java.util.List;
 public class FirstFragmentImpl implements  FirstPresenter,FirstModeImpl.OnLoadFirstDataListener  {
     public FirstView firstView;
     public FirstModel firstMode;
+
     public FirstFragmentImpl(FirstView view){
         this.firstView=view;
         this.firstMode=new FirstModeImpl();

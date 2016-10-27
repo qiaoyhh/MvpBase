@@ -1,7 +1,7 @@
 package com.example.qyh.joe.activity;
 
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.AppBarLayout;
@@ -10,7 +10,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -20,13 +19,14 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.qyh.joe.R;
+import com.example.qyh.joe.base.BaseActivity;
 import com.example.qyh.joe.fragment.FirstFragment;
 import com.example.qyh.joe.fragment.SecondeFragment;
 import com.example.qyh.joe.fragment.ThreeFragment;
 import com.example.qyh.joe.view.MainView;
 
 
-public class MainActivity extends AppCompatActivity implements MainView, NavigationView.OnNavigationItemSelectedListener
+public class MainActivity extends BaseActivity implements MainView, NavigationView.OnNavigationItemSelectedListener
 ,View.OnClickListener{
 
     private Toolbar toolbar;
@@ -43,14 +43,16 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
     };
     private ImageView imageView;//个人头像
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //EventBus.getDefault().register(this);
 
+    @Override
+    protected void loadViewLayout() {
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    protected void findViewById() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-       // toolbar.setTitle("新闻");
+        // toolbar.setTitle("新闻");
         appbar = (AppBarLayout) findViewById(R.id.appbar);
         imageView = (ImageView) findViewById(R.id.iv_touxiang);
         setSupportActionBar(toolbar);
@@ -65,10 +67,24 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         switchFirst();
+    }
+
+    @Override
+    protected void setListener() {
 
     }
+
+    @Override
+    protected void processLogic() {
+
+    }
+
+    @Override
+    protected Context getActivityContext() {
+        return this;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -128,13 +144,13 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
     @Override
     public void switchSecond() {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content,new SecondeFragment()).commitAllowingStateLoss();
-        toolbar.setTitle("乔丹");
+        toolbar.setTitle("Test");
     }
 
     @Override
     public void switchthree() {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content,new ThreeFragment()).commitAllowingStateLoss();
-        toolbar.setTitle("科比");
+        toolbar.setTitle("图片");
     }
 
     @Override

@@ -39,13 +39,12 @@ public class FirstFragment extends Fragment {
         mTablayout = (TabLayout) view.findViewById(R.id.tab_layout);
         //mTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);//挤在一起显示
         viewpager = (ViewPager) view.findViewById(R.id.viewpager);
-        viewpager.setOffscreenPageLimit(3);
         setupViewPager(viewpager);
-
         mTablayout.addTab(mTablayout.newTab().setText("头条"));
         mTablayout.addTab(mTablayout.newTab().setText("NBA"));
         mTablayout.addTab(mTablayout.newTab().setText("汽车"));
         mTablayout.addTab(mTablayout.newTab().setText("笑话"));
+
         mTablayout.setupWithViewPager(viewpager);
 
     }
@@ -58,6 +57,7 @@ public class FirstFragment extends Fragment {
         adapter.addFragment(FirstListFragment.newInstance(FOUR),"笑话");
         viewpager.setAdapter(adapter);
     }
+
 
 
     public  static class MyPagerAdapter extends FragmentPagerAdapter{

@@ -174,9 +174,6 @@ public class FirstListFragment extends Fragment implements FirstView, SwipeRefre
     //FirstAdapter点击，跳转到新闻详情界面
     private FirstAdapter.OnItemClickListener mOnItemClickListener=new FirstAdapter.OnItemClickListener(){
 
-        @Override
-        public void onClick(View v) {
-        }
 
         @Override
         public void onItemClick(View view, int position) {
@@ -192,6 +189,4 @@ public class FirstListFragment extends Fragment implements FirstView, SwipeRefre
             ActivityCompat.startActivity(getActivity(),intent,options.toBundle());
         }
     };
-
-
 }

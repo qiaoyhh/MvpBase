@@ -30,12 +30,7 @@ import android.view.animation.Interpolator;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Creates a custom animation.
- * There are 4 types: horizontal, vertical, diagonal and auto.
- * Auto adds all other 3 types.
- * Very beta stage yet!
- */
+
 public class MovingViewAnimator {
 
     //movement type vars

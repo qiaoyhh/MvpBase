@@ -118,7 +118,7 @@ public class FirstAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
     //给RecyclerView注册点击回调接口
-    public interface  OnItemClickListener extends View.OnClickListener {
+    public interface  OnItemClickListener {
         void onItemClick(View view,int position);
     }
     public void setOnItemClickListener(OnItemClickListener onItemClickListener){
