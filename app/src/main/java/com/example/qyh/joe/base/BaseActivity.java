@@ -5,19 +5,18 @@ import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.qyh.joe.theme.base.BaseSkinActivity;
+
 /**
  * 此项目功能比较简单，故没有过多抽取
  * Created by qyh on 2016/10/27.
  */
-
-
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends BaseSkinActivity implements View.OnClickListener {
     protected Context mContext;
     private ConnectivityManager manager;
 

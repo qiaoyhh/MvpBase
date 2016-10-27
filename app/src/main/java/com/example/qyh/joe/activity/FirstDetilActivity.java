@@ -71,7 +71,6 @@ public class FirstDetilActivity extends BaseActivity implements FirstDetilView {
     protected void setListener() {
     }
 
-
     @Override
     protected void processLogic() {
         mData = (DataBean) getIntent().getSerializableExtra("news");

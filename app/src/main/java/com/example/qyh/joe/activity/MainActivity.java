@@ -23,6 +23,7 @@ import com.example.qyh.joe.base.BaseActivity;
 import com.example.qyh.joe.fragment.FirstFragment;
 import com.example.qyh.joe.fragment.SecondeFragment;
 import com.example.qyh.joe.fragment.ThreeFragment;
+import com.example.qyh.joe.theme.SkinManager;
 import com.example.qyh.joe.view.MainView;
 
 
@@ -42,7 +43,7 @@ public class MainActivity extends BaseActivity implements MainView, NavigationVi
         }
     };
     private ImageView imageView;//个人头像
-
+    private boolean isChangeTheme;
 
     @Override
     protected void loadViewLayout() {
@@ -109,6 +110,7 @@ public class MainActivity extends BaseActivity implements MainView, NavigationVi
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
+        
         if (id == R.id.nav_camera) {
             switchFirst();
         } else if (id == R.id.nav_gallery) {
@@ -151,9 +153,16 @@ public class MainActivity extends BaseActivity implements MainView, NavigationVi
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content,new ThreeFragment()).commitAllowingStateLoss();
         toolbar.setTitle("图片");
     }
-
+    //关于我
     @Override
     public void switchMain() {
+        if(isChangeTheme){
+            isChangeTheme=false;
+            SkinManager.getInstance().changeSkin("green");
+        }else{
+            isChangeTheme=true;
+            SkinManager.getInstance().removeAnySkin();
+        }
 
     }
 
