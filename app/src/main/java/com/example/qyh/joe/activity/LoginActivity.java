@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.qyh.joe.R;
 import com.example.qyh.joe.customview.MovingImageView;
@@ -57,16 +56,12 @@ public class LoginActivity extends AppCompatActivity {
         }
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.hide();
-        animator = ObjectAnimator.ofFloat(image, "alpha",1f,0.5f,0.5f,1f);
+        animator = ObjectAnimator.ofFloat(image, "alpha", 1f, 0.5f, 0.5f, 1f);
         animator.setDuration(5000);
         animator.start();
 
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(LoginActivity.this,"没实现",Toast.LENGTH_SHORT).show();
-            }
-        });
     }
+
+
 }

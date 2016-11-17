@@ -2,9 +2,6 @@ package com.example.qyh.joe.theme.attr;
 
 import android.view.View;
 
-/**
- * Created by zhy on 15/9/22.
- */
 public class SkinAttr
 {
     String resName;

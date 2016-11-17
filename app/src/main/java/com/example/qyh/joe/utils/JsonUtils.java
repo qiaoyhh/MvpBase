@@ -8,10 +8,6 @@ import java.lang.reflect.Type;
 
 /**
  * Description : Json转换工具类
- * Author : lauren
- * Email  : lauren.liuling@gmail.com
- * Blog   : http://www.liuling123.com
- * Date   : 15/12/17
  */
 public class JsonUtils {
 

@@ -10,9 +10,6 @@ import com.example.qyh.joe.theme.ResourceManager;
 import com.example.qyh.joe.theme.SkinManager;
 
 
-/**
- * Created by zhy on 15/9/28.
- */
 public enum SkinAttrType
 {
     BACKGROUD("background")

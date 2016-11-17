@@ -8,9 +8,7 @@ import com.example.qyh.joe.theme.SkinConfig;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by zhy on 15/9/23.
- */
+
 public class SkinAttrSupport
 {
     public static List<SkinAttr> getSkinAttrs(AttributeSet attrs, Context context)

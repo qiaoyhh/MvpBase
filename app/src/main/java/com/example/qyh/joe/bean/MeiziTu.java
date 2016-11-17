@@ -3,8 +3,7 @@ package com.example.qyh.joe.bean;
 import java.io.Serializable;
 
 
-
-public class MeiziBean  implements Serializable
+public class MeiziTu  implements Serializable
 {
 
     private int count;

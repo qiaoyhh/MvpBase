@@ -1,6 +1,6 @@
 package com.example.qyh.joe.utils;
 
-import com.example.qyh.joe.bean.MeiziBean;
+import com.example.qyh.joe.bean.MeiziTu;
 import com.example.qyh.joe.bean.ThreeDataBean;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -14,13 +14,6 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Description :
- * Author : lauren
- * Email  : lauren.liuling@gmail.com
- * Blog   : http://www.liuling123.com
- * Date   : 15/12/23
- */
 public class ImageJsonUtils {
 
     private final static String TAG = "ImageJsonUtils";
@@ -64,7 +57,6 @@ public class ImageJsonUtils {
                 beans.add(news);
             }
         } catch (Exception e) {
-            //LogUtils.e(TAG, "readJsonThreeDataBeans error", e);
         }
         return beans;
     }
@@ -75,18 +67,16 @@ public class ImageJsonUtils {
      * @param type
      * @return
      */
-    public List<MeiziBean> parserMeiziTuByAutodyne(String html, String type) {
-
-      //  System.out.println("parserMeiziTuByAutodyne   url============"+ html);
-        List<MeiziBean> list = new ArrayList<>();
+    public List<MeiziTu> parserMeiziTuByAutodyne(String html, String type) {
+        List<MeiziTu> list = new ArrayList<>();
         Document doc = Jsoup.parse(html);
-        System.out.println("doc==========="+doc);
+        System.out.println("doc========"+doc);
         Elements p = doc.getElementsByTag("p");
-        MeiziBean meiziTu;
+        MeiziTu meiziTu;
         Element img;
         for (int i = 0; i < 15; i++)
         {
-            meiziTu = new MeiziBean();
+            meiziTu = new MeiziTu();
             img = p.get(i).select("img").first();
             String src = img.attr("src");
             String title = img.attr("alt");
@@ -95,6 +85,7 @@ public class ImageJsonUtils {
             meiziTu.setWidth(0);
             meiziTu.setHeight(0);
             meiziTu.setImageurl(src);
+            System.out.println("图片URL=========="+src);
             meiziTu.setTitle(title);
             list.add(meiziTu);
         }

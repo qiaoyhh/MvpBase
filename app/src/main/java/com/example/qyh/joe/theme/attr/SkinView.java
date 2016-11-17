@@ -4,9 +4,7 @@ import android.view.View;
 
 import java.util.List;
 
-/**
- * Created by zhy on 15/9/22.
- */
+
 public class SkinView
 {
 //    SoftReference<View> viewRef;
