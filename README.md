@@ -4,6 +4,7 @@
 
  - 史上最适合MVP初学者学习的DEMO，整体运用OKhttp+Mvp+MD风格设计，项目在网上抓取了实时新闻和搞笑图片，后期会继续完善其功能。
 
+ - 如果有一定MVP模式基础可以看一下我封装好的快速开发框架，相信会受益匪浅 https://github.com/qiaoyhh/AndroidProjectHelper
    ![首页](https://github.com/qiaoyhh/MvpPlus/blob/master/image/image1.png) 
    ![详情页](https://github.com/qiaoyhh/MvpPlus/blob/master/image/image2.png) 
    ![登录界面](https://github.com/qiaoyhh/MvpPlus/blob/master/image/image3.png)
