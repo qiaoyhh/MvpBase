@@ -10,34 +10,34 @@ import java.util.List;
 /**
  * Created by admin on 2016/8/12.
  */
-public class ThreePresenterImpl implements ThreePresenter,ThreeModelImpl.onLoanImageListener {
-    private ThreeView mThreeView;
-    private ThreeModel mThreeModle;
+public class ThreePresenterImpl implements ThreePresenter, ThreeModelImpl.onLoanImageListener {
+    private ThreeView threeView;
+    private ThreeModel threeModel;
 
     public ThreePresenterImpl(ThreeView threeview) {
-        this.mThreeView=threeview;
-        this.mThreeModle=new ThreeModelImpl();
+        this.threeView = threeview;
+        this.threeModel = new ThreeModelImpl();
     }
 
     @Override
     public void loadImageList() {
         System.out.println("loadImageList==================");
-        mThreeView.showProgress();
-        mThreeModle.onLoadImage(this);
+        threeView.showProgress();
+        threeModel.onLoadImage(this);
     }
 
     @Override
     public void onSuccess(List<ThreeDataBean> list) {
         System.out.println("onSuccess=========");
-        if(null!=list){
-            mThreeView.showImage(list);
-            mThreeView.hideProgress();
+        if (null != list) {
+            threeView.showImage(list);
+            threeView.hideProgress();
         }
     }
 
     @Override
     public void onFailure(Exception e, String s) {
-        mThreeView.hideProgress();
-        mThreeView.showFailure(e,s);
+        threeView.hideProgress();
+        threeView.showFailure(e, s);
     }
 }

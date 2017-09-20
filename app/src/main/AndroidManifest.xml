@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.FirstDetilActivity"
+        <activity android:name=".activity.FirstDetailActivity"
                   android:theme="@style/AppTheme.NoActionBar"
             />
         <activity android:name=".activity.MineActivity"

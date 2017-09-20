@@ -10,59 +10,47 @@ import com.example.qyh.joe.theme.ResourceManager;
 import com.example.qyh.joe.theme.SkinManager;
 
 
-public enum SkinAttrType
-{
-    BACKGROUD("background")
-            {
-                @Override
-                public void apply(View view, String resName)
-                {
-                    Drawable drawable = getResourceManager().getDrawableByName(resName);
-                    if (drawable == null) return;
-                    view.setBackgroundDrawable(drawable);
-                }
-            }, COLOR("textColor")
-        {
-            @Override
-            public void apply(View view, String resName)
-            {
-                ColorStateList colorlist = getResourceManager().getColorStateList(resName);
-                if (colorlist == null) return;
-                ((TextView) view).setTextColor(colorlist);
+public enum SkinAttrType {
+    BACKGROUND("background") {
+        @Override
+        public void apply(View view, String resName) {
+            Drawable drawable = getResourceManager().getDrawableByName(resName);
+            if (drawable == null) return;
+            view.setBackgroundDrawable(drawable);
+        }
+    }, COLOR("textColor") {
+        @Override
+        public void apply(View view, String resName) {
+            ColorStateList colorStateList = getResourceManager().getColorStateList(resName);
+            if (colorStateList == null) return;
+            ((TextView) view).setTextColor(colorStateList);
+        }
+    }, SRC("src") {
+        @Override
+        public void apply(View view, String resName) {
+            if (view instanceof ImageView) {
+                Drawable drawable = getResourceManager().getDrawableByName(resName);
+                if (drawable == null) return;
+                ((ImageView) view).setImageDrawable(drawable);
             }
-        }, SRC("src")
-        {
-            @Override
-            public void apply(View view, String resName)
-            {
-                if (view instanceof ImageView)
-                {
-                    Drawable drawable = getResourceManager().getDrawableByName(resName);
-                    if (drawable == null) return;
-                    ((ImageView) view).setImageDrawable(drawable);
-                }
 
-            }
-        };
+        }
+    };
 
     String attrType;
 
-    SkinAttrType(String attrType)
-    {
+    SkinAttrType(String attrType) {
         this.attrType = attrType;
     }
 
-    public String getAttrType()
-    {
+    public String getAttrType() {
         return attrType;
     }
 
 
     public abstract void apply(View view, String resName);
 
-    public ResourceManager getResourceManager()
-    {
+    public ResourceManager getResourceManager() {
         return SkinManager.getInstance().getResourceManager();
     }
-
 }

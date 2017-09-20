@@ -10,12 +10,10 @@ import android.view.ViewGroup;
 
 import com.example.qyh.joe.R;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabFragment extends Fragment
-{
+public class TabFragment extends Fragment {
     public static final String TITLE = "title";
     private String mTitle = "Defaut Value";
     private RecyclerView mRecyclerView;
@@ -23,27 +21,23 @@ public class TabFragment extends Fragment
     private List<String> mDatas = new ArrayList<String>();
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null)
-        {
+        if (getArguments() != null) {
             mTitle = getArguments().getString(TITLE);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tab, container, false);
         mRecyclerView = (RecyclerView) view
                 .findViewById(R.id.id_stickynavlayout_innerscrollview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         // mTextView = (TextView) view.findViewById(R.id.id_info);
         // mTextView.setText(mTitle);
-        for (int i = 0; i < 50; i++)
-        {
+        for (int i = 0; i < 50; i++) {
             mDatas.add(mTitle + " -> " + i);
         }
 //        mRecyclerView.setAdapter(new CommonAdapter<String>(getActivity(), R.layout.item, mDatas)
@@ -60,8 +54,7 @@ public class TabFragment extends Fragment
     }
 
 
-    public static TabFragment newInstance(String title)
-    {
+    public static TabFragment newInstance(String title) {
         TabFragment tabFragment = new TabFragment();
         Bundle bundle = new Bundle();
         bundle.putString(TITLE, title);

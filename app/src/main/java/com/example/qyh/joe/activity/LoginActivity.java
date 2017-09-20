@@ -19,16 +19,16 @@ import com.example.qyh.joe.customview.MovingImageView;
  * Created by qyh on 2016/9/6.
  */
 public class LoginActivity extends AppCompatActivity {
-    private MovingImageView image;
-    private TextInputLayout name;
-    private TextInputLayout password;
-    private CardView cv_nameandpass;
-    private TextView login;
-    private TextView register;
-    private TextView forget_password;
-    private RelativeLayout rl_root;
-    private ScrollView activity_register;
-    private ObjectAnimator animator;
+    private MovingImageView ivMoving;
+    private TextInputLayout tilName;
+    private TextInputLayout tilPassword;
+    private CardView cvNameAndPassword;
+    private TextView tvLogin;
+    private TextView tvRegister;
+    private TextView tvForgetPassword;
+    private RelativeLayout rlRoot;
+    private ScrollView svRegister;
+    private ObjectAnimator objectAnimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +38,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        image = (MovingImageView) findViewById(R.id.image);
-        name = (TextInputLayout) findViewById(R.id.name);
-        password = (TextInputLayout) findViewById(R.id.password);
-        cv_nameandpass = (CardView) findViewById(R.id.cv_nameandpass);
-        login = (TextView) findViewById(R.id.login);
-        register = (TextView) findViewById(R.id.register);
-        forget_password = (TextView) findViewById(R.id.forget_password);
-        rl_root = (RelativeLayout) findViewById(R.id.rl_root);
-        activity_register = (ScrollView) findViewById(R.id.activity_register);
+        ivMoving = (MovingImageView) findViewById(R.id.image);
+        tilName = (TextInputLayout) findViewById(R.id.name);
+        tilPassword = (TextInputLayout) findViewById(R.id.password);
+        cvNameAndPassword = (CardView) findViewById(R.id.cv_nameandpass);
+        tvLogin = (TextView) findViewById(R.id.login);
+        tvRegister = (TextView) findViewById(R.id.register);
+        tvForgetPassword = (TextView) findViewById(R.id.forget_password);
+        rlRoot = (RelativeLayout) findViewById(R.id.rl_root);
+        svRegister = (ScrollView) findViewById(R.id.activity_register);
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -56,12 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         }
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.hide();
-        animator = ObjectAnimator.ofFloat(image, "alpha", 1f, 0.5f, 0.5f, 1f);
-        animator.setDuration(5000);
-        animator.start();
-
-
+        objectAnimator = ObjectAnimator.ofFloat(ivMoving, "alpha", 1f, 0.5f, 0.5f, 1f);
+        objectAnimator.setDuration(5000);
+        objectAnimator.start();
     }
-
-
 }

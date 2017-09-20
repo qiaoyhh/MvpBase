@@ -19,15 +19,15 @@ import java.util.List;
 /**
  * Created by admin on 2016/8/11.
  */
-public class SecondeListFragment extends Fragment implements FirstView, View.OnClickListener {
+public class SecondListFragment extends Fragment implements FirstView, View.OnClickListener {
 
-    private RecyclerView recycle_view;
-    private SwipeRefreshLayout swipe_refresh_widget;
-    private FloatingActionButton fa_firstlist;
+    private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private FloatingActionButton floatingActionButton;
 
-    public static SecondeListFragment newInstance(int type) {
+    public static SecondListFragment newInstance(int type) {
         Bundle bundle = new Bundle();
-        SecondeListFragment fragment = new SecondeListFragment();
+        SecondListFragment fragment = new SecondListFragment();
         bundle.putInt("type", type);
         fragment.setArguments(bundle);
         return fragment;
@@ -57,7 +57,7 @@ public class SecondeListFragment extends Fragment implements FirstView, View.OnC
     }
 
     @Override
-    public void addData(List<DataBean> mlist) {
+    public void addData(List<DataBean> dataBeanList) {
 
     }
 
@@ -67,18 +67,17 @@ public class SecondeListFragment extends Fragment implements FirstView, View.OnC
     }
 
     private void initView(View view) {
-        recycle_view = (RecyclerView) view.findViewById(R.id.recycle_view);
-        swipe_refresh_widget = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_widget);
-        fa_firstlist = (FloatingActionButton) view.findViewById(R.id.fa_firstlist);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycle_view);
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_widget);
+        floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fa_firstlist);
 
-        fa_firstlist.setOnClickListener(this);
+        floatingActionButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fa_firstlist:
-
                 break;
         }
     }

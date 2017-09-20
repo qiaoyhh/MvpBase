@@ -12,7 +12,7 @@ import com.example.qyh.joe.R;
 public class ImageLoaderUtils {
 
     public static void display(Context context, ImageView imageView, String url, int placeholder, int error) {
-        if(imageView == null) {
+        if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
         Glide.with(context).load(url).placeholder(placeholder)
@@ -20,7 +20,7 @@ public class ImageLoaderUtils {
     }
 
     public static void display(Context context, ImageView imageView, String url) {
-        if(imageView == null) {
+        if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
         Glide.with(context).load(url).placeholder(R.mipmap.ic_image_loading)

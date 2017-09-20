@@ -17,51 +17,51 @@ import com.example.qyh.joe.theme.base.BaseSkinActivity;
  * Created by qyh on 2016/10/27.
  */
 public abstract class BaseActivity extends BaseSkinActivity implements View.OnClickListener {
-    protected Context mContext;
-    private ConnectivityManager manager;
+    protected Context context;
+    private ConnectivityManager connectivityManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);// 锁定竖屏
         // setTheme(R.style.AnimationActivity);//设置切换动画
-        mContext = getActivityContext();
+        context = getActivityContext();
+
         initView();
-
-
-        initdata();
-
+        initData();
     }
+
     /**
      * 初始activity方法
      */
     private void initView() {
         loadViewLayout();
     }
-    private void initdata(){
+
+    private void initData() {
         findViewById();
         setListener();
-        processLogic();
+        processBusinessLogic();
     }
+
     @Override
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-
     }
+
     @Override
     protected void onPause() {
         // TODO Auto-generated method stub
         super.onPause();
-
     }
 
     @Override
     protected void onDestroy() {
         // TODO Auto-generated method stub
         super.onDestroy();
-
     }
+
     /**
      * 加载页面layout
      */
@@ -80,8 +80,7 @@ public abstract class BaseActivity extends BaseSkinActivity implements View.OnCl
     /**
      * 业务逻辑处理，主要与后端交互
      */
-    protected abstract void processLogic();
-
+    protected abstract void processBusinessLogic();
 
     /**
      * Activity.this
@@ -98,6 +97,7 @@ public abstract class BaseActivity extends BaseSkinActivity implements View.OnCl
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
+
     /**
      * 获取屏幕宽度(px)
      *
@@ -107,8 +107,7 @@ public abstract class BaseActivity extends BaseSkinActivity implements View.OnCl
     public int getMobileWidth() {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int width = dm.widthPixels;
-        return width;
+        return dm.widthPixels;
     }
 
     /**
@@ -120,12 +119,12 @@ public abstract class BaseActivity extends BaseSkinActivity implements View.OnCl
     public int getMobileHeight() {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int height = dm.heightPixels;
-        return height;
+        return dm.heightPixels;
     }
 
     /**
      * 获取状态栏高度
+     *
      * @return
      */
     public int getStatusBarHeight() {
@@ -140,17 +139,17 @@ public abstract class BaseActivity extends BaseSkinActivity implements View.OnCl
     public boolean checkNetworkState() {
         boolean flag = false;
         //得到网络连接信息
-        manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         //去进行判断网络是否连接
-        if (manager.getActiveNetworkInfo() != null) {
-            flag = manager.getActiveNetworkInfo().isAvailable();
+        if (connectivityManager.getActiveNetworkInfo() != null) {
+            flag = connectivityManager.getActiveNetworkInfo().isAvailable();
         }
         return flag;
     }
 
     //沉浸式状态栏
     @Override
-    public void onWindowFocusChanged(boolean hasFocus){
+    public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus && Build.VERSION.SDK_INT >= 19) {
             View decorView = getWindow().getDecorView();

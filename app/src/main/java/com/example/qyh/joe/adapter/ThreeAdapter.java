@@ -17,45 +17,44 @@ import java.util.List;
 /**
  * Created by admin on 2016/8/12.
  */
-public class ThreeAdapter extends RecyclerView.Adapter<ThreeAdapter.ItemViewHolder>{
-    private List<ThreeDataBean> mData;
-    private int mMaxWidth;
-    private int mMaxHeight;
-    private Context mContext;
+public class ThreeAdapter extends RecyclerView.Adapter<ThreeAdapter.ItemViewHolder> {
+    private List<ThreeDataBean> threeDataBeanList;
+    private int maxWidth;
+    private int maxHeight;
+    private Context context;
+
     public ThreeAdapter(Context context) {
-        this.mContext=context;
+        this.context = context;
     }
 
-    public void setData(List<ThreeDataBean> list){
-        this.mData=list;
+    public void setData(List<ThreeDataBean> list) {
+        this.threeDataBeanList = list;
         this.notifyDataSetChanged();
     }
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_treefragment, parent,false);
-        ItemViewHolder vh = new ItemViewHolder(view);
-        return vh;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_treefragment, parent, false);
+        return new ItemViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        ThreeDataBean imageBean = mData.get(position);
-        if(imageBean == null) {
+        ThreeDataBean imageBean = threeDataBeanList.get(position);
+        if (imageBean == null) {
             return;
         }
         holder.mTitle.setText(imageBean.getTitle());
-        System.out.println("图片url============"+imageBean.getThumburl());
-        ImageLoaderUtils.display(mContext, holder.mImage, imageBean.getThumburl());
+        System.out.println("图片url============" + imageBean.getThumburl());
+        ImageLoaderUtils.display(context, holder.mImage, imageBean.getThumburl());
     }
 
     @Override
     public int getItemCount() {
-        return mData==null?0:mData.size();
+        return threeDataBeanList == null ? 0 : threeDataBeanList.size();
     }
 
-    public class   ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-
+    public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView mTitle;
         public ImageView mImage;
 
@@ -67,7 +66,6 @@ public class ThreeAdapter extends RecyclerView.Adapter<ThreeAdapter.ItemViewHold
 
         @Override
         public void onClick(View v) {
-
         }
     }
 }

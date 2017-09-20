@@ -7,8 +7,11 @@ import java.util.List;
  */
 public interface MeiZiView {
 
-    void  showImage(List list);
-    void  showFailure(Exception e,String s);
-    void  showProgress();
-    void  hideProgress();
+    void showImage(List list);
+
+    void showFailure(Exception e, String s);
+
+    void showProgress();
+
+    void hideProgress();
 }

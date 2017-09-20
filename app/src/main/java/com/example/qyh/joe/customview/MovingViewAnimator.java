@@ -1,5 +1,3 @@
-
-
 package com.example.qyh.joe.customview;
 
 import android.animation.Animator;
@@ -70,7 +68,6 @@ public class MovingViewAnimator {
             }));
         }
     };
-
 
     public MovingViewAnimator(View imgView) {
         mView = imgView;
@@ -177,7 +174,7 @@ public class MovingViewAnimator {
     }
 
     public void cancel() {
-        if(isRunning) {
+        if (isRunning) {
             mAnimatorSet.removeListener(repeatAnimatorListener);
             mAnimatorSet.cancel();
         }
@@ -188,7 +185,7 @@ public class MovingViewAnimator {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
             return;
 
-        if(mAnimatorSet.isStarted())
+        if (mAnimatorSet.isStarted())
             mAnimatorSet.pause();
     }
 
@@ -197,7 +194,7 @@ public class MovingViewAnimator {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
             return;
 
-        if(mAnimatorSet.isPaused())
+        if (mAnimatorSet.isPaused())
             mAnimatorSet.resume();
     }
 
@@ -312,7 +309,6 @@ public class MovingViewAnimator {
      * Class for create custom AUTO travel type regardless movementType var.
      */
     public class Builder {
-
         private ArrayList<Animator> mList;
 
         private Builder() {
@@ -369,7 +365,5 @@ public class MovingViewAnimator {
             setUpValues();
             MovingViewAnimator.this.start();
         }
-
     }
-
 }

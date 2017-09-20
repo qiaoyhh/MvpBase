@@ -28,21 +28,20 @@ import com.example.qyh.joe.view.MainView;
 
 
 public class MainActivity extends BaseActivity implements MainView, NavigationView.OnNavigationItemSelectedListener
-,View.OnClickListener{
+        , View.OnClickListener {
 
     private Toolbar toolbar;
-    private AppBarLayout appbar;
+    private AppBarLayout appBarLayout;
     private static boolean isExit = false;
 
-    private static Handler mHandler = new Handler() {
-
+    private static Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             isExit = false;
         }
     };
-    private ImageView imageView;//个人头像
+    private ImageView ivAvatar;//个人头像
     private boolean isChangeTheme;
 
     @Override
@@ -54,31 +53,32 @@ public class MainActivity extends BaseActivity implements MainView, NavigationVi
     protected void findViewById() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         // toolbar.setTitle("新闻");
-        appbar = (AppBarLayout) findViewById(R.id.appbar);
-        imageView = (ImageView) findViewById(R.id.iv_touxiang);
+        appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+        ivAvatar = (ImageView) findViewById(R.id.iv_touxiang);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         //ActionBarDrawerToggle 提供了一个方便的方式来配合DrawerLayout和ActionBar，以实现推荐的抽屉功能。
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        if (drawer != null) {
+            drawer.setDrawerListener(toggle);
+        }
 
         //该方法会自动和actionBar关联, 将开关的图片显示在了action上，如果不设置，也可以有抽屉的效果，不过是默认的图标
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        if (navigationView != null) {
+            navigationView.setNavigationItemSelectedListener(this);
+        }
 
         switchFirst();
     }
 
     @Override
     protected void setListener() {
-
     }
 
     @Override
-    protected void processLogic() {
-
+    protected void processBusinessLogic() {
     }
 
     @Override
@@ -86,23 +86,20 @@ public class MainActivity extends BaseActivity implements MainView, NavigationVi
         return this;
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    /** 菜单键点击的事件处理 */
+
+    /**
+     * 菜单键点击的事件处理
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        return (item.getItemId() == R.id.action_settings || super.onOptionsItemSelected(item));
     }
+
     /**
      * 设置当导航项被点击时的回调。OnNavigationItemSelectedListener会提供给我们被选中的MenuItem
      */
@@ -110,68 +107,68 @@ public class MainActivity extends BaseActivity implements MainView, NavigationVi
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-        
+
         if (id == R.id.nav_camera) {
             switchFirst();
         } else if (id == R.id.nav_gallery) {
             switchSecond();
 
         } else if (id == R.id.nav_slideshow) {
-            switchthree();
+            switchThree();
 
         } else if (id == R.id.nav_share) {
-            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
 
         } else if (id == R.id.nav_send) {
-           // startActivity(new Intent(getApplicationContext(),PersonalActivity.class));
+            // startActivity(new Intent(getApplicationContext(),PersonalActivity.class));
             switchMain();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        if (drawer != null) {
+            drawer.closeDrawer(GravityCompat.START);
+        }
         return true;
     }
+
     @Override
     public void onClick(View v) {
-        Toast.makeText(MainActivity.this, "头像", Toast.LENGTH_SHORT);
+        Toast.makeText(MainActivity.this, "头像", Toast.LENGTH_SHORT).show();
     }
+
     @Override
     public void switchFirst() {
-      getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new FirstFragment()).commitAllowingStateLoss();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new FirstFragment()).commitAllowingStateLoss();
         toolbar.setTitle("新闻");
-
     }
 
     @Override
     public void switchSecond() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content,new SecondeFragment()).commitAllowingStateLoss();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new SecondeFragment()).commitAllowingStateLoss();
         toolbar.setTitle("Test");
     }
 
     @Override
-    public void switchthree() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content,new ThreeFragment()).commitAllowingStateLoss();
+    public void switchThree() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new ThreeFragment()).commitAllowingStateLoss();
         toolbar.setTitle("图片");
     }
 
     /**
      * 护眼模式，只在【新闻】界面实现了
-     *
+     * <p>
      * PS：虽然更换主题显的不伦不类，不过就是为了实现这个功能，将就着 看吧
-     *
      */
     @Override
     public void switchMain() {
-        if(isChangeTheme){
-            isChangeTheme=false;
+        if (isChangeTheme) {
+            isChangeTheme = false;
             SkinManager.getInstance().changeSkin("blue");
-        }else{
-            isChangeTheme=true;
+        } else {
+            isChangeTheme = true;
             SkinManager.getInstance().removeAnySkin();
         }
-
     }
-
 
     //双击退出应用
     @Override
@@ -188,8 +185,10 @@ public class MainActivity extends BaseActivity implements MainView, NavigationVi
             isExit = true;
             // 利用handler延迟发送更改状态信息
             View view = findViewById(R.id.drawer_layout);
-            Snackbar.make(view, "再按一次退出程序", Snackbar.LENGTH_SHORT).show();
-            mHandler.sendEmptyMessageDelayed(0, 2000);
+            if (view != null) {
+                Snackbar.make(view, "再按一次退出程序", Snackbar.LENGTH_SHORT).show();
+            }
+            handler.sendEmptyMessageDelayed(0, 2000);
         } else {
             this.finish();
         }

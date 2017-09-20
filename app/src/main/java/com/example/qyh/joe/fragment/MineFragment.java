@@ -25,12 +25,12 @@ import java.util.List;
 public class MineFragment extends Fragment {
     private ImageView ivImage;
     private Toolbar toolbar;
-    private CollapsingToolbarLayout collapsing_toolbar;
-    private TabLayout mTablayout;
-    private ViewPager viewpager;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
-    public static final int ONE=0;
-    public static final int TWO=1;
+    public static final int ONE = 0;
+    public static final int TWO = 1;
 
     @Nullable
     @Override
@@ -43,33 +43,35 @@ public class MineFragment extends Fragment {
     private void initView(View view) {
         ivImage = (ImageView) view.findViewById(R.id.ivImage);
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        collapsing_toolbar = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
-        mTablayout = (TabLayout) view.findViewById(R.id.sliding_tabs);
-        viewpager = (ViewPager) view.findViewById(R.id.viewpager);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
+        tabLayout = (TabLayout) view.findViewById(R.id.sliding_tabs);
+        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
-        viewpager.setOffscreenPageLimit(3);
-        setupViewPager(viewpager);
+        viewPager.setOffscreenPageLimit(3);
+        setupViewPager(viewPager);
 
-        mTablayout.addTab(mTablayout.newTab().setText("头条"));
-        mTablayout.addTab(mTablayout.newTab().setText("NBA"));
-        mTablayout.setupWithViewPager(viewpager);
+        tabLayout.addTab(tabLayout.newTab().setText("头条"));
+        tabLayout.addTab(tabLayout.newTab().setText("NBA"));
+        tabLayout.setupWithViewPager(viewPager);
     }
+
     private void setupViewPager(ViewPager viewpager) {
-        MyPagerAdapter adapter=new MyPagerAdapter(getChildFragmentManager());
+        MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager());
         adapter.addFragment(FirstListFragment.newInstance(ONE), "头条");
         adapter.addFragment(FirstListFragment.newInstance(TWO), "NBA");
         viewpager.setAdapter(adapter);
     }
 
 
-    public  static class MyPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragment=new ArrayList<Fragment>();
-        private final List<String> mFragmentTitle=new ArrayList<String>();
+    public static class MyPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragment = new ArrayList<Fragment>();
+        private final List<String> mFragmentTitle = new ArrayList<String>();
 
-        public void addFragment(Fragment  fragment,String title){
+        public void addFragment(Fragment fragment, String title) {
             mFragment.add(fragment);
             mFragmentTitle.add(title);
         }
+
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -82,7 +84,6 @@ public class MineFragment extends Fragment {
         @Override
         public int getCount() {
             return mFragment.size();
-
         }
 
         @Override

@@ -5,36 +5,30 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 
-public class ResourceManager
-{
-    private static final String DEFTYPE_DRAWABLE = "drawable";
-    private static final String DEFTYPE_COLOR = "color";
-    private Resources mResources;
-    private String mPluginPackageName;
-    private String mSuffix;
+public class ResourceManager {
+    private static final String DEF_TYPE_DRAWABLE = "drawable";
+    private static final String DEF_TYPE_COLOR = "color";
+    private Resources resources;
+    private String pluginPackageName;
+    private String suffix;
 
+    public ResourceManager(Resources res, String pluginPackageName, String suffix) {
+        resources = res;
+        this.pluginPackageName = pluginPackageName;
 
-    public ResourceManager(Resources res, String pluginPackageName, String suffix)
-    {
-        mResources = res;
-        mPluginPackageName = pluginPackageName;
-
-        if (suffix == null)
-        {
+        if (suffix == null) {
             suffix = "";
         }
-        mSuffix = suffix;
-
+        this.suffix = suffix;
     }
 
-    public Drawable getDrawableByName(String name)
-    {
+    public Drawable getDrawableByName(String name) {
         try {
             name = appendSuffix(name);
-            return mResources.getDrawable(mResources.getIdentifier(name, DEFTYPE_DRAWABLE, mPluginPackageName));
+            return resources.getDrawable(resources.getIdentifier(name, DEF_TYPE_DRAWABLE, pluginPackageName));
         } catch (Resources.NotFoundException e) {
             try {
-                return mResources.getDrawable(mResources.getIdentifier(name, DEFTYPE_COLOR, mPluginPackageName));
+                return resources.getDrawable(resources.getIdentifier(name, DEF_TYPE_COLOR, pluginPackageName));
             } catch (Resources.NotFoundException e2) {
                 e.printStackTrace();
                 return null;
@@ -42,40 +36,31 @@ public class ResourceManager
         }
     }
 
-    public int getColor(String name)
-    {
-        try
-        {
+    public int getColor(String name) {
+        try {
             name = appendSuffix(name);
-            return mResources.getColor(mResources.getIdentifier(name, DEFTYPE_COLOR, mPluginPackageName));
+            return resources.getColor(resources.getIdentifier(name, DEF_TYPE_COLOR, pluginPackageName));
 
-        } catch (Resources.NotFoundException e)
-        {
+        } catch (Resources.NotFoundException e) {
             e.printStackTrace();
             return -1;
         }
-
     }
 
     public ColorStateList getColorStateList(String name) {
-        try
-        {
+        try {
             name = appendSuffix(name);
-            return mResources.getColorStateList(mResources.getIdentifier(name, DEFTYPE_COLOR, mPluginPackageName));
+            return resources.getColorStateList(resources.getIdentifier(name, DEF_TYPE_COLOR, pluginPackageName));
 
-        } catch (Resources.NotFoundException e)
-        {
+        } catch (Resources.NotFoundException e) {
             e.printStackTrace();
             return null;
         }
-
     }
 
-    private String appendSuffix(String name)
-    {
-        if (!TextUtils.isEmpty(mSuffix))
-            return name += "_" + mSuffix;
-        return name ;
+    private String appendSuffix(String name) {
+        if (!TextUtils.isEmpty(suffix))
+            return name += "_" + suffix;
+        return name;
     }
-
 }
