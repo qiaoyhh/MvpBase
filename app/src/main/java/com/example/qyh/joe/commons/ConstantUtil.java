@@ -5,8 +5,7 @@ package com.example.qyh.joe.commons;
  *
  * @HotBitmapGG
  */
-public class ConstantUtil
-{
+public class ConstantUtil {
 
     //易源接口AppId
     public static final String APP_ID = "15314";
@@ -36,7 +35,7 @@ public class ConstantUtil
     public static final String ZIPAI_MEIZI = "share";
 
     //推荐
-    public static final String TUIJIAN_MEIZI ="best";
+    public static final String TUIJIAN_MEIZI = "best";
 
     //热门
     public static final String HOT_MEIZI = "hot";

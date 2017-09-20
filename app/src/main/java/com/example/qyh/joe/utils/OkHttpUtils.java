@@ -21,7 +21,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Description : OkHttp网络连接封装工具类
-
  */
 public class OkHttpUtils {
 
@@ -121,8 +120,9 @@ public class OkHttpUtils {
 
     /**
      * get请求
-     * @param url  请求url
-     * @param callback  请求回调
+     *
+     * @param url      请求url
+     * @param callback 请求回调
      */
     public static void get(String url, ResultCallback callback) {
         getmInstance().getRequest(url, callback);
@@ -130,9 +130,10 @@ public class OkHttpUtils {
 
     /**
      * post请求
-     * @param url       请求url
-     * @param callback  请求回调
-     * @param params    请求参数
+     *
+     * @param url      请求url
+     * @param callback 请求回调
+     * @param params   请求参数
      */
     public static void post(String url, final ResultCallback callback, List<Param> params) {
         getmInstance().postRequest(url, callback, params);
@@ -140,13 +141,14 @@ public class OkHttpUtils {
 
     /**
      * http请求回调类,回调方法在UI线程中执行
+     *
      * @param <T>
      */
     public static abstract class ResultCallback<T> {
 
         Type mType;
 
-        public ResultCallback(){
+        public ResultCallback() {
             mType = getSuperclassTypeParameter(getClass());
         }
 
@@ -161,12 +163,14 @@ public class OkHttpUtils {
 
         /**
          * 请求成功回调
+         *
          * @param response
          */
         public abstract void onSuccess(T response);
 
         /**
          * 请求失败回调
+         *
          * @param e
          */
         public abstract void onFailure(Exception e);

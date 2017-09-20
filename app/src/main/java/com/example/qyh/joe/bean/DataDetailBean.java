@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- 新闻详情实体类
+ * 新闻详情实体类
  */
-public class DataDetilBean implements Serializable {
+public class DataDetailBean implements Serializable {
     /**
      * docid
      */
@@ -95,7 +95,7 @@ public class DataDetilBean implements Serializable {
 
     @Override
     public String toString() {
-        return "DataDetilBean{" +
+        return "DataDetailBean{" +
                 "docid='" + docid + '\'' +
                 ", title='" + title + '\'' +
                 ", source='" + source + '\'' +

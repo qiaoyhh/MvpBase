@@ -23,8 +23,8 @@ import java.util.List;
 public class SecondeFragment extends Fragment {
     private ImageView ivImage1;
     private ImageView ivImage2;
-    private TabLayout mTablayout;
-    private ViewPager viewpager;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
     public static final int NEWS_TYPE_TOP = 0;
     public static final int NEWS_TYPE_NBA = 1;
 
@@ -39,21 +39,21 @@ public class SecondeFragment extends Fragment {
     private void initView(View view) {
         ivImage1 = (ImageView) view.findViewById(R.id.ivImage1);
         ivImage2 = (ImageView) view.findViewById(R.id.ivImage2);
-        mTablayout = (TabLayout) view.findViewById(R.id.tab_layout);
-        viewpager = (ViewPager) view.findViewById(R.id.viewpager);
-        setupViewPager(viewpager);
+        tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
 
-        mTablayout.addTab(mTablayout.newTab().setText("头条"));
-        mTablayout.addTab(mTablayout.newTab().setText("NBA"));
+        tabLayout.addTab(tabLayout.newTab().setText("头条"));
+        tabLayout.addTab(tabLayout.newTab().setText("NBA"));
 
-        mTablayout.setupWithViewPager(viewpager);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     public void setupViewPager(ViewPager upViewPager) {
         MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(SecondeListFragment.newInstance(NEWS_TYPE_TOP), "头条");
-        adapter.addFragment(SecondeListFragment.newInstance(NEWS_TYPE_NBA), "NBA");
-        viewpager.setAdapter(adapter);
+        adapter.addFragment(SecondListFragment.newInstance(NEWS_TYPE_TOP), "头条");
+        adapter.addFragment(SecondListFragment.newInstance(NEWS_TYPE_NBA), "NBA");
+        viewPager.setAdapter(adapter);
     }
 
 

@@ -1,7 +1,6 @@
 package com.example.qyh.joe.theme.callback;
 
 
-public interface ISkinChangedListener
-{
+public interface ISkinChangedListener {
     void onSkinChanged();
 }

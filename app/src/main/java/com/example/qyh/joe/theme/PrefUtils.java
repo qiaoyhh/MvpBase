@@ -4,53 +4,44 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 
-public class PrefUtils
-{
+public class PrefUtils {
     private Context mContext;
 
-    public PrefUtils(Context context)
-    {
+    public PrefUtils(Context context) {
         this.mContext = context;
     }
 
-    public String getPluginPath()
-    {
+    public String getPluginPath() {
         SharedPreferences sp = mContext.getSharedPreferences(SkinConfig.PREF_NAME, Context.MODE_PRIVATE);
         return sp.getString(SkinConfig.KEY_PLUGIN_PATH, "");
     }
 
-    public String getSuffix()
-    {
+    public String getSuffix() {
         SharedPreferences sp = mContext.getSharedPreferences(SkinConfig.PREF_NAME, Context.MODE_PRIVATE);
         return sp.getString(SkinConfig.KEY_PLUGIN_SUFFIX, "");
     }
 
-    public boolean clear()
-    {
+    public boolean clear() {
         SharedPreferences sp = mContext.getSharedPreferences(SkinConfig.PREF_NAME, Context.MODE_PRIVATE);
         return sp.edit().clear().commit();
     }
 
-    public void putPluginPath(String path)
-    {
+    public void putPluginPath(String path) {
         SharedPreferences sp = mContext.getSharedPreferences(SkinConfig.PREF_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(SkinConfig.KEY_PLUGIN_PATH, path).apply();
     }
 
-    public void putPluginPkg(String pkgName)
-    {
+    public void putPluginPkg(String pkgName) {
         SharedPreferences sp = mContext.getSharedPreferences(SkinConfig.PREF_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(SkinConfig.KEY_PLUGIN_PKG, pkgName).apply();
     }
 
-    public String getPluginPkgName()
-    {
+    public String getPluginPkgName() {
         SharedPreferences sp = mContext.getSharedPreferences(SkinConfig.PREF_NAME, Context.MODE_PRIVATE);
         return sp.getString(SkinConfig.KEY_PLUGIN_PKG, "");
     }
 
-    public void putPluginSuffix(String suffix)
-    {
+    public void putPluginSuffix(String suffix) {
         SharedPreferences sp = mContext.getSharedPreferences(SkinConfig.PREF_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(SkinConfig.KEY_PLUGIN_SUFFIX, suffix).apply();
     }

@@ -16,38 +16,33 @@ import java.util.List;
 
 public class ImageJsonUtils {
 
-    private final static String TAG = "ImageJsonUtils";
+    private final static String TAG = ImageJsonUtils.class.getSimpleName();
 
-    private static volatile ImageJsonUtils mCache;
+    private static volatile ImageJsonUtils cache;
 
-    private ImageJsonUtils()
-    {
-
+    private ImageJsonUtils() {
     }
 
-    public static ImageJsonUtils getInstance()
-    {
-
-        if (mCache == null)
-        {
-            synchronized (ImageJsonUtils.class)
-            {
-                if (mCache == null)
-                {
-                    mCache = new ImageJsonUtils();
+    public static ImageJsonUtils getInstance() {
+        if (cache == null) {
+            synchronized (ImageJsonUtils.class) {
+                if (cache == null) {
+                    cache = new ImageJsonUtils();
                 }
             }
         }
 
-        return mCache;
+        return cache;
     }
+
     /**
      * 将获取到的json转换为图片列表对象
+     *
      * @param res
      * @return
      */
     public static List<ThreeDataBean> readJsonThreeDataBeans(String res) {
-        List<ThreeDataBean> beans = new ArrayList<ThreeDataBean>();
+        List<ThreeDataBean> beans = new ArrayList<>();
         try {
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(res).getAsJsonArray();
@@ -57,9 +52,11 @@ public class ImageJsonUtils {
                 beans.add(news);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return beans;
     }
+
     /**
      * 解析自拍妹子Html
      *
@@ -70,26 +67,24 @@ public class ImageJsonUtils {
     public List<MeiziTu> parserMeiziTuByAutodyne(String html, String type) {
         List<MeiziTu> list = new ArrayList<>();
         Document doc = Jsoup.parse(html);
-        System.out.println("doc========"+doc);
+        System.out.println("doc========" + doc);
         Elements p = doc.getElementsByTag("p");
         MeiziTu meiziTu;
         Element img;
-        for (int i = 0; i < 15; i++)
-        {
+        for (int index = 0; index < 15; index++) {
             meiziTu = new MeiziTu();
-            img = p.get(i).select("img").first();
+            img = p.get(index).select("img").first();
             String src = img.attr("src");
             String title = img.attr("alt");
-            meiziTu.setOrder(i);
+            meiziTu.setOrder(index);
             meiziTu.setType(type);
             meiziTu.setWidth(0);
             meiziTu.setHeight(0);
             meiziTu.setImageurl(src);
-            System.out.println("图片URL=========="+src);
+            System.out.println("图片URL==========" + src);
             meiziTu.setTitle(title);
             list.add(meiziTu);
         }
         return list;
     }
-
 }

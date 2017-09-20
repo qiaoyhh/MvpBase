@@ -8,11 +8,11 @@ import java.util.List;
  * Created by qyh on 2016/8/5.
  */
 public interface FirstView {
-    void  showProgress();
+    void showProgress();
 
-    void  hideProgress();
+    void hideProgress();
 
-    void  addData(List<DataBean> mlist );
+    void addData(List<DataBean> dataBeanList);
 
     void showLoadFail();
 }

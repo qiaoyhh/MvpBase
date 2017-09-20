@@ -3,8 +3,7 @@ package com.example.qyh.joe.bean;
 import java.io.Serializable;
 
 
-public class MeiziTu  implements Serializable
-{
+public class MeiziTu implements Serializable {
 
     private int count;
 
@@ -25,110 +24,92 @@ public class MeiziTu  implements Serializable
 
     private int order;
 
-    public int getGroupid()
-    {
+    public int getGroupid() {
 
         return groupid;
     }
 
-    public void setGroupid(int groupid)
-    {
+    public void setGroupid(int groupid) {
 
         this.groupid = groupid;
     }
 
-    public int getOrder()
-    {
+    public int getOrder() {
 
         return order;
     }
 
-    public void setOrder(int order)
-    {
+    public void setOrder(int order) {
 
         this.order = order;
     }
 
-    public String getType()
-    {
+    public String getType() {
 
         return type;
     }
 
-    public void setType(String type)
-    {
+    public void setType(String type) {
 
         this.type = type;
     }
 
-    public int getWidth()
-    {
+    public int getWidth() {
 
         return width;
     }
 
-    public void setWidth(int width)
-    {
+    public void setWidth(int width) {
 
         this.width = width;
     }
 
-    public int getCount()
-    {
+    public int getCount() {
 
         return count;
     }
 
-    public void setCount(int count)
-    {
+    public void setCount(int count) {
 
         this.count = count;
     }
 
-    public int getHeight()
-    {
+    public int getHeight() {
 
         return height;
     }
 
-    public void setHeight(int height)
-    {
+    public void setHeight(int height) {
 
         this.height = height;
     }
 
-    public String getImageurl()
-    {
+    public String getImageurl() {
 
         return imageurl;
     }
 
-    public void setImageurl(String imageurl)
-    {
+    public void setImageurl(String imageurl) {
 
         this.imageurl = imageurl;
     }
 
-    public String getUrl()
-    {
+    public String getUrl() {
 
         return url;
     }
 
-    public void setUrl(String url)
-    {
+    public void setUrl(String url) {
 
         this.url = url;
     }
 
-    public String getTitle()
-    {
+    public String getTitle() {
 
         return title;
     }
 
-    public void setTitle(String title)
-    {
+    public void setTitle(String title) {
 
         this.title = title;
     }

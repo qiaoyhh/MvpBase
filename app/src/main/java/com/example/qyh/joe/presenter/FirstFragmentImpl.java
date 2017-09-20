@@ -1,9 +1,9 @@
 package com.example.qyh.joe.presenter;
 
-import com.example.qyh.joe.fragment.FirstFragment;
 import com.example.qyh.joe.bean.DataBean;
 import com.example.qyh.joe.commons.Urls;
-import com.example.qyh.joe.model.FirstModeImpl;
+import com.example.qyh.joe.fragment.FirstFragment;
+import com.example.qyh.joe.model.FirstModelImpl;
 import com.example.qyh.joe.model.FirstModel;
 import com.example.qyh.joe.view.FirstView;
 
@@ -12,30 +12,31 @@ import java.util.List;
 /**
  * Created by qyh on 2016/8/5.
  */
-public class FirstFragmentImpl implements  FirstPresenter,FirstModeImpl.OnLoadFirstDataListener  {
+public class FirstFragmentImpl implements FirstPresenter, FirstModelImpl.OnLoadFirstDataListener {
     public FirstView firstView;
-    public FirstModel firstMode;
+    public FirstModel firstModel;
 
-    public FirstFragmentImpl(FirstView view){
-        this.firstView=view;
-        this.firstMode=new FirstModeImpl();
+    public FirstFragmentImpl(FirstView view) {
+        this.firstView = view;
+        this.firstModel = new FirstModelImpl();
     }
+
     @Override
     public void loadData(Object type, int page) {
-       String  url= getUrl((Integer) type,page);
-        System.out.println("url========="+url);
-        if(page==0){
+        String url = getUrl((Integer) type, page);
+        System.out.println("url=========" + url);
+        if (page == 0) {
             firstView.showProgress();
         }
-        firstMode.loadData(url, (Integer) type,this);
+        firstModel.loadData(url, (Integer) type, this);
     }
 
     private String getUrl(int type, int page) {
-        StringBuilder sb=new StringBuilder();
-        switch (type){
+        StringBuilder sb = new StringBuilder();
+        switch (type) {
             case FirstFragment.ONE:
                 sb.append(Urls.TOP_URL).append(Urls.TOP_ID);
-            break;
+                break;
             case FirstFragment.TWO:
                 sb.append(Urls.COMMON_URL).append(Urls.NBA_ID);
                 break;

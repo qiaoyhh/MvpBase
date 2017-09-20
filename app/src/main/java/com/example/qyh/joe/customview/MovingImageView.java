@@ -40,13 +40,13 @@ public class MovingImageView extends ImageView {
 
     //user vars
     private float maxRelativeSize, minRelativeOffset;
-    private int mSpeed;
+    private int speed;
     private long startDelay;
-    private int mRepetitions;
+    private int repetitions;
     private boolean loadOnCreate;
 
     //Our custom animator
-    private MovingViewAnimator mAnimator;
+    private MovingViewAnimator animator;
 
     public MovingImageView(Context context) {
         this(context, null);
@@ -59,14 +59,13 @@ public class MovingImageView extends ImageView {
     public MovingImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
-        TypedArray attributes = context.getTheme().obtainStyledAttributes(attrs,
-                R.styleable.MovingImageView, defStyle, 0);
+        TypedArray attributes = context.getTheme().obtainStyledAttributes(attrs, R.styleable.MovingImageView, defStyle, 0);
 
         try {
             maxRelativeSize = attributes.getFloat(R.styleable.MovingImageView_miv_max_relative_size, 3.0f);
             minRelativeOffset = attributes.getFloat(R.styleable.MovingImageView_miv_min_relative_offset, 0.2f);
-            mSpeed = attributes.getInt(R.styleable.MovingImageView_miv_speed, 50);
-            mRepetitions = attributes.getInt(R.styleable.MovingImageView_miv_repetitions, -1);
+            speed = attributes.getInt(R.styleable.MovingImageView_miv_speed, 50);
+            repetitions = attributes.getInt(R.styleable.MovingImageView_miv_repetitions, -1);
             startDelay = attributes.getInt(R.styleable.MovingImageView_miv_start_delay, 0);
             loadOnCreate = attributes.getBoolean(R.styleable.MovingImageView_miv_load_on_create, true);
         } finally {
@@ -79,14 +78,14 @@ public class MovingImageView extends ImageView {
     private void init() {
         //mandatory
         super.setScaleType(ScaleType.MATRIX);
-        mAnimator = new MovingViewAnimator(this);
+        animator = new MovingViewAnimator(this);
     }
 
     /**
      * Updates canvas size, includes padding.
      *
-     * @param w new width.
-     * @param h new height.
+     * @param w    new width.
+     * @param h    new height.
      * @param oldW old width.
      * @param oldH old height.
      */
@@ -128,23 +127,26 @@ public class MovingImageView extends ImageView {
      * Gets scale and sets the real length path on Animator.
      */
     private void updateAnimator() {
-        if (canvasHeight == 0 && canvasWidth == 0)
+        if (canvasHeight == 0 && canvasWidth == 0) {
             return;
+        }
 
         float scale = calculateTypeAndScale();
-        if (scale == 0)
+        if (scale == 0) {
             return;
+        }
 
         float w = (imageWidth * scale) - canvasWidth;
         float h = (imageHeight * scale) - canvasHeight;
 
-        mAnimator.updateValues(movementType, w, h);
-        mAnimator.setStartDelay(startDelay);
-        mAnimator.setSpeed(mSpeed);
-        mAnimator.setRepetition(mRepetitions);
+        animator.updateValues(movementType, w, h);
+        animator.setStartDelay(startDelay);
+        animator.setSpeed(speed);
+        animator.setRepetition(repetitions);
 
-        if (loadOnCreate)
-            mAnimator.start();
+        if (loadOnCreate) {
+            animator.start();
+        }
     }
 
     /**
@@ -175,24 +177,23 @@ public class MovingImageView extends ImageView {
 
             } else {
                 scale = Math.max(sW, maxRelativeSize);
-                movementType = (scale == sW) ? MovingViewAnimator.NONE_MOVE :
-                        MovingViewAnimator.DIAGONAL_MOVE;
+                movementType = (scale == sW) ? MovingViewAnimator.NONE_MOVE : MovingViewAnimator.DIAGONAL_MOVE;
             }
 
-          //Width too small to perform any horizontal animation, scale to width
+            //Width too small to perform any horizontal animation, scale to width
         } else if (offsetWidth == 0) {
             scale = canvasWidth / imageWidth;
             movementType = MovingViewAnimator.VERTICAL_MOVE;
 
-          //Height too small to perform any vertical animation, scale to height
+            //Height too small to perform any vertical animation, scale to height
         } else if (offsetHeight == 0) {
             scale = canvasHeight / imageHeight;
             movementType = MovingViewAnimator.HORIZONTAL_MOVE;
 
-          //Enough size but too big, resize down
+            //Enough size but too big, resize down
         } else if (scaleByImage > maxRelativeSize) {
             scale = maxRelativeSize / scaleByImage;
-            if(imageWidth * scale < canvasWidth || imageHeight * scale < canvasHeight) {
+            if (imageWidth * scale < canvasWidth || imageHeight * scale < canvasHeight) {
                 scale = Math.max(canvasWidth / imageWidth, canvasHeight / imageHeight);
             }
         }
@@ -243,7 +244,7 @@ public class MovingImageView extends ImageView {
      * @return Moving Animator.
      */
     public MovingViewAnimator getMovingAnimator() {
-        return mAnimator;
+        return animator;
     }
 
     public float getMaxRelativeSize() {
@@ -271,5 +272,4 @@ public class MovingImageView extends ImageView {
     public void setLoadOnCreate(boolean loadOnCreate) {
         this.loadOnCreate = loadOnCreate;
     }
-
 }
